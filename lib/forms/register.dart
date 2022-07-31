@@ -18,8 +18,8 @@ class _RegisterState extends State<Register> {
   var dateOfBirth = TextEditingController();
   var gender = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -129,10 +129,9 @@ class _RegisterState extends State<Register> {
   }
 
   Widget _signInButton() {
-
     return ElevatedButton(
 
-      onPressed: (){}
+      onPressed: () {}
       ,
       child: const Text('Sign in'),
     );

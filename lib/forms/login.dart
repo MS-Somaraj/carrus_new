@@ -1,4 +1,7 @@
 
+import 'package:carrus_new/adminPage.dart';
+import 'package:carrus_new/forms/register.dart';
+import 'package:carrus_new/homePage.dart';
 import 'package:flutter/material.dart';
 
 import '../adminPage.dart';
@@ -15,8 +18,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+
 var _pass=TextEditingController();
 var _email=TextEditingController();
+
+
+
 
   @override
 
