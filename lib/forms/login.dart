@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
 
+import '../adminPage.dart';
+import '../homePage.dart';
+import 'register.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,7 +15,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-
+var _pass=TextEditingController();
+var _email=TextEditingController();
 
   @override
 
@@ -49,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   _forgotText(),
                 ],
               ),
+              _loginButton(),
 
               SizedBox(
                 height: 60,

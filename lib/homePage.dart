@@ -1,6 +1,9 @@
 
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
+import 'forms/booking.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -83,6 +86,6 @@ class _HomePageState extends State<HomePage> {
             ),
           );
 
-        });
+        }
   }
-}
+
