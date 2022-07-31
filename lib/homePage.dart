@@ -1,5 +1,7 @@
 
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carrus_new/forms/booking.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -83,6 +85,7 @@ class _HomePageState extends State<HomePage> {
             ),
           );
 
-        });
+
+
   }
 }
