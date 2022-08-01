@@ -1,7 +1,7 @@
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
 import 'package:carrus_new/helper/sharedpreferences.dart';
-import 'package:carrus_new/ui/adminPage.dart';
+import 'package:carrus_new/ui/admin/adminPage.dart';
 import 'package:carrus_new/ui/homePage.dart';
 import 'package:carrus_new/ui/login.dart';
 import 'package:flutter/material.dart';

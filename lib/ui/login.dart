@@ -1,5 +1,5 @@
 import 'package:carrus_new/bloc/loginbloc.dart';
-import 'package:carrus_new/ui/adminPage.dart';
+import 'package:carrus_new/ui/admin/adminPage.dart';
 import 'package:carrus_new/ui/customer.dart';
 import 'package:carrus_new/ui/register.dart';
 import 'package:carrus_new/ui/homePage.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'adminPage.dart';
+import 'admin/adminPage.dart';
 import 'homePage.dart';
 import 'loadingscreen.dart';
 import 'register.dart';
@@ -71,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 30,
               ),
+              TextButton(onPressed:(){ Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin()));}, child: Text("Admin Page")),
             ],
           ),
         ),
