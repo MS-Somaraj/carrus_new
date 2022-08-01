@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:group_radio_button/group_radio_button.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -19,6 +20,10 @@ class _RegisterState extends State<Register> {
   var gender = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+
+  String _verticalGroupValue = "male";
+  List<String> _status = ["male", "female"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,89 +32,238 @@ class _RegisterState extends State<Register> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: SingleChildScrollView(
             child: Column(
 
               children: [
-                TextFormField(
-                  controller: name,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_box),
-                    hintText: "Name",
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    child: TextField(
+                      controller: name,
+
+
+                      style: TextStyle(color: Colors.black),
+                      decoration: new InputDecoration(
+                        label: Text('Name'),
+
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                      ),
+                    ),
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
+                ),
+
+                SizedBox(
+                  height: 25,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    child: TextField(
+                      controller: email,
+
+
+                      style: TextStyle(color: Colors.black),
+                      decoration: new InputDecoration(
+                        label: Text('Email'),
+
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                TextFormField(
-                  controller: email,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_box),
-                    hintText: "Email",
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    child: TextField(
+                      controller: email,
+
+
+                      style: TextStyle(color: Colors.black),
+                      decoration: new InputDecoration(
+                        label: Text('Phone Number'),
+
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                      ),
+                    ),
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty || !value.contains('@')) {
-                      return 'Invalid email!';
-                    }
-                  },
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                TextFormField(
-                  controller: phone,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_box),
-                    hintText: "Phone Number",
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                TextFormField(
-                  controller: password,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_box),
-                    hintText: "Password",
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    child: TextField(
+                      controller: email,
+
+
+                      style: TextStyle(color: Colors.black),
+                      decoration: new InputDecoration(
+                        label: Text('Place'),
+
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 25,
                 ),
 
-                TextFormField(
-                  controller: cpassword,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_box),
-                    hintText: "Confirm-Password",
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    child: TextField(
+                      controller: email,
+
+
+                      style: TextStyle(color: Colors.black),
+                      decoration: new InputDecoration(
+                        label: Text('Password '),
+
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                TextFormField(
-                  controller: gender,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.male),
-                    hintText: "Gender",
+                Column(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Gender"),
+                  ],
+                ),
+                RadioGroup<String>.builder(
+                  direction: Axis.horizontal,
+                  groupValue: _verticalGroupValue,
+                  horizontalAlignment: MainAxisAlignment.end,
+                  onChanged: (value) => setState(() {
+                    _verticalGroupValue = value!;
+                  }),
+                  items: _status,
+                  textStyle: TextStyle(
+                      fontSize: 15,
+                      color: Colors.deepPurple
+                  ),
+                  itemBuilder: (item) => RadioButtonBuilder(
+                    item,
+
                   ),
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                TextFormField(
-                  controller: dateOfBirth,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_box),
-                    hintText: "Date-0f-Birth",
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.9,
+                    child: TextField(
+                      controller: email,
+
+
+                      style: TextStyle(color: Colors.black),
+                      decoration: new InputDecoration(
+                        label: Text('Date-Of_Birth (YYYY-MM-DD'),
+
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding :4.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
