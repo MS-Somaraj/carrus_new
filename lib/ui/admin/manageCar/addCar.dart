@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:image_picker/image_picker.dart';
+
 
 class AddCar extends StatefulWidget {
   const AddCar({Key? key}) : super(key: key);
@@ -126,11 +130,52 @@ class _AddCarState extends State<AddCar> {
                     item,
                   ),
                 ),
+                SizedBox(
+                  height: 12,
+                ),
+                RaisedButton(
+                  color: Colors.deepPurple,
+                  onPressed: () {
+                    _getFromGallery();
+                  },
+                  child: Text("PICK FROM GALLERY",style: TextStyle(color: Colors.white),),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                RaisedButton(
+                  color: Colors.deepPurple,
+                  onPressed: () {
+                    _getFromCamera();
+                  },
+                  child: Text("PICK FROM CAMERA",style: TextStyle(color: Colors.white),)
+
+                )
 
 
               ],
             ),
           ),
         ));
+  }
+}
+_getFromGallery() async {
+  PickedFile? pickedFile = await ImagePicker().getImage(
+    source: ImageSource.gallery,
+    maxWidth: 1800,
+    maxHeight: 1800,
+  );
+  if (pickedFile != null) {
+    File imageFile = File(pickedFile.path);
+  }
+}
+_getFromCamera() async {
+  PickedFile? pickedFile = await ImagePicker().getImage(
+    source: ImageSource.camera,
+    maxWidth: 1800,
+    maxHeight: 1800,
+  );
+  if (pickedFile != null) {
+    File imageFile = File(pickedFile.path);
   }
 }
