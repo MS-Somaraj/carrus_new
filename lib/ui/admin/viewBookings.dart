@@ -10,6 +10,15 @@ class ViewBookings extends StatefulWidget {
 class _ViewBookingsState extends State<ViewBookings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("View Bookings"),
+      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: SingleChildScrollView(),
+      ),
+    );
   }
 }

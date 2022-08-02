@@ -10,6 +10,15 @@ class ManageCar extends StatefulWidget {
 class _ManageCarState extends State<ManageCar> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Manage Car"),
+      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: SingleChildScrollView(),
+      ),
+    );
   }
 }
