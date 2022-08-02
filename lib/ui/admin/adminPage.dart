@@ -19,7 +19,12 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
+  void initState(){
 
+    super.initState();
+    BlocProvider.of<ShopDetailsBloc>(context).add(CheckDETAILS());
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +89,93 @@ class _AdminState extends State<Admin> {
                         title: Text('View Bookings'),
                         onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewBookings()));},
                       ),
+
                     ),
+
+    BlocBuilder<ShopDetailsBloc,ShopDetailsState>(
+    builder:(context,state) {
+      if (state is CheckDETAILS) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      else if(state is DetailsChecked) {
+        return
+        Padding(
+
+          padding: const EdgeInsets.only(top: 48.0),
+          child: Card(
+            color: Colors.white38,
+            child: ListTile(
+
+              title: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0,18,18,18),
+                  child: Column(
+                    children: [
+                      Text("Shop details",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                      Row(
+                        children: [
+                          Text("Shop name:",style: TextStyle(fontWeight: FontWeight.bold),),
+                          Text(" ${state.shopDetailsModel.data![0].shopname.toString()}",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        children: [
+                          Text("Owner name:",style: TextStyle(fontWeight: FontWeight.bold),),
+                          Text(" ${state.shopDetailsModel.data![0].ownername.toString()}",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        children: [
+                          Text("Phone:",style: TextStyle(fontWeight: FontWeight.bold),),
+                          Text(" ${state.shopDetailsModel.data![0].phone.toString()}",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        children: [
+                          Text("Email:",style: TextStyle(fontWeight: FontWeight.bold),),
+                          Text(" ${state.shopDetailsModel.data![0].email.toString()}",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        children: [
+                          Text("Place:",style: TextStyle(fontWeight: FontWeight.bold),),
+                          Text(" ${state.shopDetailsModel.data![0].place.toString()}",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+
+                      SingleChildScrollView(
+                        child: Row(
+                          children: [
+                            Text("Location:",style: TextStyle(fontWeight: FontWeight.bold),),
+                            Text(" ${state.shopDetailsModel.data![0].location.toString()}",style: TextStyle(fontSize: MediaQuery.of(context).size.width*.020,fontWeight: FontWeight.w800),),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+
+                    ],
+                  ),
+                ),
+              ),
+              onTap: () {},
+            ),
+          ),
+        );
+      }
+      else
+        return Container();
+    }
+    ),
+
+
                   ],
                 ),
               ),
