@@ -1,3 +1,4 @@
+import 'package:carrus_new/bloc/editshopbloc.dart';
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
 import 'package:carrus_new/bloc/signinbloc.dart';
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
         BlocProvider<LogBloc>(create: (context) => LogBloc()),
         BlocProvider<SignInBloc>(create:(context)=> SignInBloc()),
+        BlocProvider<EditShopBloc>(create:(context)=> EditShopBloc()),
+
       ],
       child: MaterialApp(
         title: 'CARRUS Car Rental',
