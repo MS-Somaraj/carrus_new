@@ -8,7 +8,7 @@ class ShopDetails extends StatefulWidget {
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
-  bool _isEnabled = false;
+  bool _isEnabled= false;
   Color _colorContainer = Colors.black;
   @override
   Widget build(BuildContext context) {
