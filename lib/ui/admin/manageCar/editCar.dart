@@ -1,3 +1,4 @@
+import 'package:carrus_new/ui/admin/upload.dart';
 import 'package:flutter/material.dart';
 
 class EditCar extends StatefulWidget {
@@ -70,6 +71,8 @@ class _EditCarState extends State<EditCar> {
                     },
                   ),
                 ), //car type
+                
+                //TextButton(child: Text("Upload Docs"),onPressed: Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadScreen()),),
 
 
 

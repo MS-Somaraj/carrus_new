@@ -16,11 +16,14 @@ class ShopDetails extends StatefulWidget {
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
-  bool _isEnabled = false;
+
+  bool _isEnabled= false;
+
   bool _isEnabled1 = false;
   bool _isEnabled2 = false;
   bool _isEnabled3 = false;
   bool _isEnabled4 = false;
+
   bool _isEnabled5 = false;
   var email = TextEditingController(),
       place = TextEditingController(),
@@ -29,6 +32,7 @@ class _ShopDetailsState extends State<ShopDetails> {
       ownername = TextEditingController(),
       lon = TextEditingController(),
       lat = TextEditingController();
+
 
   Color _colorContainer = Colors.black;
   @override

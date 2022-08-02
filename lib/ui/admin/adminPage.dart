@@ -1,4 +1,4 @@
-import 'package:carrus_new/ui/admin/manageCar.dart';
+import 'package:carrus_new/ui/admin/manageCar/manageCar.dart';
 import 'package:carrus_new/ui/admin/shopDetails.dart';
 import 'package:carrus_new/ui/admin/viewBookings.dart';
 import 'package:carrus_new/ui/admin/viewUser.dart';
