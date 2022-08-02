@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:carrus_new/ui/admin/upload.dart';
 import 'package:flutter/material.dart';
+import 'package:group_radio_button/group_radio_button.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditCar extends StatefulWidget {
   const EditCar({Key? key}) : super(key: key);
@@ -11,81 +15,185 @@ class EditCar extends StatefulWidget {
 class _EditCarState extends State<EditCar> {
   bool _isEnabled = false;
   Color _colorContainer = Colors.black;
+
+  var _carname = TextEditingController();
+  var _price = TextEditingController();
+  var _enginetype = TextEditingController();
+  List _cartype = ['SUV', 'Sedan', 'MPV', 'Hatchback', 'Crossover', 'Coupe'];
+  String? selectedType = 'Sedan';
+  String _verticalGroupValue = "Petrol";
+  List<String> _status = ["Petrol", "Diesel"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit Car"),
       ),
-      body: Container(
+      body:Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           child: Column(
-              children:[
-                ListTile(
-                  title: TextField(
-                    enabled: _isEnabled,
-                    decoration: InputDecoration(
-                        label: Text("Car Name"),
-                        hintText: 'Car Name',
-                        icon: Icon(Icons.shop)
+            children: [
+
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width*0.9,
+                  child: TextField(
+                    controller: _carname,
+                    style: TextStyle(color: Colors.deepPurple),
+                    decoration: new InputDecoration(
+                      label: Text('Car Name'),
+
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                        borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                        gapPadding :4.0,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                        borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                        gapPadding :4.0,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.deepPurple,width: 1.2 ),
+                        borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                        gapPadding :4.0,
+                      ),
                     ),
                   ),
-                  // The icon button which will notify list item to change
-                  trailing: GestureDetector(
-                    child: new Icon(
-                      Icons.edit,
-                      color: Colors.deepPurple,
+                ),
+              ),  //car name
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width*0.9,
+                  child: TextField(
+                    controller: _price,
+                    style: TextStyle(color: Colors.deepPurple),
+                    decoration: new InputDecoration(
+                      label: Text('Car Price'),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                        borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                        gapPadding :4.0,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black, width: 1.2),
+                        borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                        gapPadding :4.0,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
+                        borderRadius : const BorderRadius.all(Radius.circular(15.0)),
+                        gapPadding :4.0,
+                      ),
                     ),
-                    onTap: () {
-                      _colorContainer = _colorContainer == Colors.purple ?
-                      Colors.black :
-                      Colors.deepPurple;
-                      setState((){
-                        _isEnabled = !_isEnabled;
-                      });
-                    },
                   ),
-                ), //car name
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(23,8,23,8),
+                child: DropdownButton(
+                  elevation: 20,
+                  focusColor: Colors.deepPurple,
+                  iconEnabledColor: Colors.deepPurple,
+                  iconDisabledColor: Colors.black,
+                  value: selectedType,
+                  items: _cartype
+                      .map((item) =>
+                      DropdownMenuItem(value: item, child: Padding(
+                        padding: const EdgeInsets.only(left:12.0),
+                        child: Text(item),
+                      )))
+                      .toList(),
+                  onChanged: (item) {
+                    setState(() => selectedType = item as String?);
+                    print(item);
+                  },
+                  isExpanded: true,
+                ),
+              ),
 
-                ListTile(
-                  title: TextField(
-                    enabled: _isEnabled,
-                    decoration: InputDecoration(
-                        label: Text("Car Type"),
-                        hintText: 'Car Type',
-                        icon: Icon(Icons.person)
-                    ),
-                  ),
-                  // The icon button which will notify list item to change
-                  trailing: GestureDetector(
-                    child: new Icon(
-                      Icons.edit,
-                      color: Colors.deepPurple,
-                    ),
-                    onTap: () {
-                      setState((){
-                        _isEnabled = !_isEnabled;
-                      });
-                    },
-                  ),
-                ), //car type
-                
-                //TextButton(child: Text("Upload Docs"),onPressed: Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadScreen()),),
-
-
-
-                SizedBox(height: 30,),
-
-                MaterialButton(
-                  onPressed: (){},
+              RadioGroup<String>.builder(
+                direction: Axis.horizontal,
+                groupValue: _verticalGroupValue,
+                horizontalAlignment: MainAxisAlignment.center,
+                onChanged: (value) => setState(() {
+                  _verticalGroupValue = value!;
+                }),
+                items: _status,
+                textStyle: TextStyle(
+                    fontSize: 15,
+                    color: Colors.deepPurple
+                ),
+                itemBuilder: (item) => RadioButtonBuilder(
+                  item,
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              RaisedButton(
+                color: Colors.deepPurple,
+                onPressed: () {
+                  _getFromGallery();
+                },
+                child: Text("PICK FROM GALLERY",style: TextStyle(color: Colors.white),),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              RaisedButton(
+                  colorBrightness: Brightness.light,
                   color: Colors.deepPurple,
-                  child: Text("Save",style: TextStyle(color: Colors.white)),)
-              ]
+                  onPressed: () {
+                    _getFromCamera();
+                  },
+                  child: Text("PICK FROM CAMERA",style: TextStyle(color: Colors.white),)
+
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              RaisedButton(
+                  colorBrightness: Brightness.light,
+                  color: Colors.deepPurple,
+                  onPressed: () {
+
+                  },
+                  child: Text("Save",style: TextStyle(color: Colors.white),)
+
+              ),
+
+
+
+
+            ],
           ),
         ),
-      ),
-    );
+      ));
+  }
+}
+_getFromGallery() async {
+  PickedFile? pickedFile = await ImagePicker().getImage(
+    source: ImageSource.gallery,
+    maxWidth: 1800,
+    maxHeight: 1800,
+  );
+  if (pickedFile != null) {
+    File imageFile = File(pickedFile.path);
+  }
+}
+_getFromCamera() async {
+  PickedFile? pickedFile = await ImagePicker().getImage(
+    source: ImageSource.camera,
+    maxWidth: 1800,
+    maxHeight: 1800,
+  );
+  if (pickedFile != null) {
+    File imageFile = File(pickedFile.path);
   }
 }

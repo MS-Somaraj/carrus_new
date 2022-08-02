@@ -144,13 +144,28 @@ class _AddCarState extends State<AddCar> {
                   height: 12,
                 ),
                 RaisedButton(
+                  colorBrightness: Brightness.light,
                   color: Colors.deepPurple,
                   onPressed: () {
                     _getFromCamera();
                   },
                   child: Text("PICK FROM CAMERA",style: TextStyle(color: Colors.white),)
 
-                )
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                RaisedButton(
+                    colorBrightness: Brightness.light,
+                    color: Colors.deepPurple,
+                    onPressed: () {
+
+                    },
+                    child: Text("Submit",style: TextStyle(color: Colors.white),)
+
+                ),
+
+
 
 
               ],
