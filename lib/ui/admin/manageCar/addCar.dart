@@ -14,6 +14,7 @@ class _AddCarState extends State<AddCar> {
       appBar: AppBar(
         title: Text("Add Car"),
       ),
+      body: Container()
     );
   }
 }
