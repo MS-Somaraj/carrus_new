@@ -1,11 +1,16 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:carrus_new/bloc/editshopbloc.dart';
+import 'package:carrus_new/bloc/shopdetailsbloc.dart';
+import 'package:carrus_new/data/models/LoginModel.dart';
+import 'package:carrus_new/data/models/ShopDetailsModel.dart';
 import 'package:carrus_new/ui/admin/adminPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../data/repository.dart';
 import '../loadingscreen.dart';
 
 class ShopDetails extends StatefulWidget {
@@ -16,6 +21,17 @@ class ShopDetails extends StatefulWidget {
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
+
+
+
+  @override
+  void initState(){
+
+super.initState();
+BlocProvider.of<ShopDetailsBloc>(context).add(CheckDETAILS());
+
+
+  }
 
   bool _isEnabled= false;
   bool _isEnabled1 = false;
@@ -33,7 +49,9 @@ class _ShopDetailsState extends State<ShopDetails> {
       lat = TextEditingController();
 
 
+
   Color _colorContainer = Colors.black;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +67,7 @@ class _ShopDetailsState extends State<ShopDetails> {
             child: Column(children: [
               ListTile(
                 title: TextFormField(
-                  initialValue: "hello",
+                  initialValue:null,
                   controller: shopname,
                   enabled: _isEnabled,
                   decoration: InputDecoration(
@@ -76,7 +94,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
               ListTile(
                 title: TextFormField(
-                  initialValue: "hello",
+                  initialValue: null,
                   controller: ownername,
                   enabled: _isEnabled1,
                   decoration: InputDecoration(
@@ -100,7 +118,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
               ListTile(
                 title: TextFormField(
-                  initialValue: "hello",
+                  initialValue: null,
                   controller: email,
                   enabled: _isEnabled2,
                   decoration: InputDecoration(
@@ -124,7 +142,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
               ListTile(
                 title: TextFormField(
-                  initialValue: "hello",
+                  initialValue: null,
                   controller: phone,
                   enabled: _isEnabled3,
                   decoration: InputDecoration(
@@ -154,7 +172,8 @@ class _ShopDetailsState extends State<ShopDetails> {
                     SizedBox(
                       width: 220,
                       height: 60,
-                      child: TextField(
+                      child: TextFormField(
+                        initialValue: null,
                         enabled: _isEnabled4,
                         controller: lat,
                         decoration: InputDecoration(
@@ -168,7 +187,8 @@ class _ShopDetailsState extends State<ShopDetails> {
                       height: 70,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 38.0),
-                        child: TextField(
+                        child: TextFormField(
+                          initialValue: null,
                           controller: lon,
                           enabled: _isEnabled4,
                           decoration: InputDecoration(
@@ -194,7 +214,8 @@ class _ShopDetailsState extends State<ShopDetails> {
                 ),
               ),
               ListTile(
-                title: TextField(
+                title: TextFormField(
+                  initialValue: null,
                   controller: place,
                   enabled: _isEnabled5,
                   decoration: InputDecoration(

@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<ShopDetailsBloc>(create:(context)=> ShopDetailsBloc()),
         BlocProvider<EditShopBloc>(create:(context)=> EditShopBloc()),
         BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
         BlocProvider<LogBloc>(create: (context) => LogBloc()),
