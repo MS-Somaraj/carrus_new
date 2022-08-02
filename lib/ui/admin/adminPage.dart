@@ -2,7 +2,7 @@ import 'package:carrus_new/ui/admin/manageCar.dart';
 import 'package:carrus_new/ui/admin/shopDetails.dart';
 import 'package:carrus_new/ui/admin/viewBookings.dart';
 import 'package:carrus_new/ui/admin/viewUser.dart';
-import 'package:carrus_new/ui/booking.dart';
+import 'package:carrus_new/ui/user/booking.dart';
 import 'package:flutter/material.dart';
 
 class Admin extends StatefulWidget {
@@ -22,7 +22,7 @@ class _AdminState extends State<Admin> {
       ),
       body: Container(
         decoration: new BoxDecoration(
-          color: Color(0xD8D3C2F3),
+          color: Color(0xFFFFFFFF),
         ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

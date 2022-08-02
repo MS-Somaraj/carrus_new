@@ -2,15 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
 import 'package:carrus_new/helper/sharedpreferences.dart';
 
-import 'package:carrus_new/ui/booking.dart';
-import 'package:carrus_new/ui/login.dart';
+import 'package:carrus_new/ui/user/booking.dart';
+import 'package:carrus_new/ui/user/login.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'booking.dart';
-import 'loadingscreen.dart';
+import '../loadingscreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

@@ -1,15 +1,15 @@
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/ui/admin/adminPage.dart';
 import 'package:carrus_new/ui/customer.dart';
-import 'package:carrus_new/ui/register.dart';
-import 'package:carrus_new/ui/homePage.dart';
+import 'package:carrus_new/ui/user/register.dart';
+import 'package:carrus_new/ui/user/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'admin/adminPage.dart';
+import '../admin/adminPage.dart';
 import 'homePage.dart';
-import 'loadingscreen.dart';
+import '../loadingscreen.dart';
 import 'register.dart';
 
 class LoginPage extends StatefulWidget {

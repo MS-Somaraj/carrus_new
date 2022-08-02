@@ -19,7 +19,58 @@ class _ViewUserState extends State<ViewUser> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: SingleChildScrollView(),
+          child: SingleChildScrollView(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              children:[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.verified_user),
+                    title: Text('User 1'),
+                    // onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.verified_user),
+                    title: Text('User 2'),
+                    // onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.verified_user),
+                    title: Text('User 3'),
+                    // onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.verified_user),
+                    title: Text('User 4'),
+                    // onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

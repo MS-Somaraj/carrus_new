@@ -8,6 +8,8 @@ class ShopDetails extends StatefulWidget {
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
+  bool _isEnabled = false;
+  Color _colorContainer = Colors.black;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +21,136 @@ class _ShopDetailsState extends State<ShopDetails> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: SingleChildScrollView(),
+          child: SingleChildScrollView(
+            child: Column(
+              children:[
+                ListTile(
+                title: TextField(
+                  enabled: _isEnabled,
+                  decoration: InputDecoration(
+                    label: Text("Shop Name"),
+                    hintText: 'Shop Name',
+                    icon: Icon(Icons.shop)
+                  ),
+                ),
+                // The icon button which will notify list item to change
+                trailing: GestureDetector(
+                  child: new Icon(
+                    Icons.edit,
+                    color: Colors.deepPurple,
+                  ),
+                  onTap: () {
+                    _colorContainer = _colorContainer == Colors.purple ?
+                    Colors.black :
+                    Colors.deepPurple;
+                    setState((){
+                      _isEnabled = !_isEnabled;
+                    });
+                  },
+                ),
+              ), //shop name
+
+                ListTile(
+                  title: TextField(
+                    enabled: _isEnabled,
+                    decoration: InputDecoration(
+                        label: Text("Shop Owner"),
+                        hintText: 'Shop Owner',
+                        icon: Icon(Icons.person)
+                    ),
+                  ),
+                  // The icon button which will notify list item to change
+                  trailing: GestureDetector(
+                    child: new Icon(
+                      Icons.edit,
+                      color: Colors.deepPurple,
+                    ),
+                    onTap: () {
+                      setState((){
+                        _isEnabled = !_isEnabled;
+                      });
+                    },
+                  ),
+                ), //shop owner
+
+                ListTile(
+                  title: TextField(
+                    enabled: _isEnabled,
+                    decoration: InputDecoration(
+                        label: Text("Email"),
+                        hintText: 'Email',
+                        icon: Icon(Icons.email)
+                    ),
+                  ),
+                  // The icon button which will notify list item to change
+                  trailing: GestureDetector(
+                    child: new Icon(
+                      Icons.edit,
+                      color: Colors.deepPurple,
+                    ),
+                    onTap: () {
+                      setState((){
+                        _isEnabled = !_isEnabled;
+                      });
+                    },
+                  ),
+                ), //email
+
+                ListTile(
+                  title: TextField(
+                    enabled: _isEnabled,
+                    decoration: InputDecoration(
+                        label: Text("Password"),
+                        hintText: 'Password',
+                        icon: Icon(Icons.password)
+                    ),
+                  ),
+                  // The icon button which will notify list item to change
+                  trailing: GestureDetector(
+                    child: new Icon(
+                      Icons.edit,
+                      color: Colors.deepPurple,
+                    ),
+                    onTap: () {
+                      setState((){
+                        _isEnabled = !_isEnabled;
+                      });
+                    },
+                  ),
+                ), //password
+
+                ListTile(
+                  title: TextField(
+                    enabled: _isEnabled,
+                    decoration: InputDecoration(
+                        label: Text("Location Coordinates"),
+                        hintText: 'Latitude and Longitude(x,y)',
+                        icon: Icon(Icons.location_city)
+                    ),
+                  ),
+                  // The icon button which will notify list item to change
+                  trailing: GestureDetector(
+                    child: new Icon(
+                      Icons.edit,
+                      color: Colors.deepPurple,
+                    ),
+                    onTap: () {
+                      setState((){
+                        _isEnabled = !_isEnabled;
+                      });
+                    },
+                  ),
+                ),
+
+                SizedBox(height: 30,),
+                
+                MaterialButton(
+                  onPressed: (){},
+                  color: Colors.deepPurple,
+                  child: Text("Save",style: TextStyle(color: Colors.white)),)//location
+          ]
+            ),
+          ),
         ),
       ),
     );
