@@ -10,7 +10,6 @@ class ShopDetails extends StatefulWidget {
 class _ShopDetailsState extends State<ShopDetails> {
 
   bool _isEnabled= false;
-  bool _isEnabled = false;
   bool _isEnabled1 = false;
   bool _isEnabled2 = false;
   bool _isEnabled3 = false;
