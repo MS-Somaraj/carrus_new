@@ -1,5 +1,6 @@
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
+import 'package:carrus_new/bloc/signinbloc.dart';
 import 'package:carrus_new/helper/sharedpreferences.dart';
 import 'package:carrus_new/ui/admin/adminPage.dart';
 import 'package:carrus_new/ui/user/homePage.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
         BlocProvider<LogBloc>(create: (context) => LogBloc()),
+        BlocProvider<SignInBloc>(create:(context)=> SignInBloc()),
       ],
       child: MaterialApp(
         title: 'CARRUS Car Rental',
