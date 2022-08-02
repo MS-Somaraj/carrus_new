@@ -20,43 +20,46 @@ class _AdminState extends State<Admin> {
         title: Text("Admin"),
 
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            children:[
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.verified_user),
-                  title: Text('View User'),
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: SingleChildScrollView(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              children:[
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.verified_user),
+                    title: Text('View User'),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+                  ),
                 ),
-              ),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.car_rental),
-                  title: Text('Manage Car'),
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ManageCar()));},
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.car_rental),
+                    title: Text('Manage Car'),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ManageCar()));},
+                  ),
                 ),
-              ),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.shop),
-                  title: Text('Shop Details'),
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ShopDetails()));},
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.shop),
+                    title: Text('Shop Details'),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ShopDetails()));},
+                  ),
                 ),
-              ),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.book_online),
-                  title: Text('View Bookings'),
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewBookings()));},
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.book_online),
+                    title: Text('View Bookings'),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewBookings()));},
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
