@@ -140,7 +140,8 @@ class _LoginPageState extends State<LoginPage> {
               Loading.showLoading(context);
             }
           },
-        ));
+        )
+    );
   }
 
   Widget _bottomText() {

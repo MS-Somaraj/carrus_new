@@ -8,7 +8,14 @@ class ShopDetails extends StatefulWidget {
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
+
   bool _isEnabled= false;
+  bool _isEnabled = false;
+  bool _isEnabled1 = false;
+  bool _isEnabled2 = false;
+  bool _isEnabled3 = false;
+  bool _isEnabled4 = false;
+
   Color _colorContainer = Colors.black;
   @override
   Widget build(BuildContext context) {
@@ -52,7 +59,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
                 ListTile(
                   title: TextField(
-                    enabled: _isEnabled,
+                    enabled: _isEnabled1,
                     decoration: InputDecoration(
                         label: Text("Shop Owner"),
                         hintText: 'Shop Owner',
@@ -67,7 +74,7 @@ class _ShopDetailsState extends State<ShopDetails> {
                     ),
                     onTap: () {
                       setState((){
-                        _isEnabled = !_isEnabled;
+                        _isEnabled1 = !_isEnabled1;
                       });
                     },
                   ),
@@ -75,7 +82,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
                 ListTile(
                   title: TextField(
-                    enabled: _isEnabled,
+                    enabled: _isEnabled2,
                     decoration: InputDecoration(
                         label: Text("Email"),
                         hintText: 'Email',
@@ -90,7 +97,7 @@ class _ShopDetailsState extends State<ShopDetails> {
                     ),
                     onTap: () {
                       setState((){
-                        _isEnabled = !_isEnabled;
+                        _isEnabled2 = !_isEnabled2;
                       });
                     },
                   ),
@@ -98,7 +105,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
                 ListTile(
                   title: TextField(
-                    enabled: _isEnabled,
+                    enabled: _isEnabled3,
                     decoration: InputDecoration(
                         label: Text("Password"),
                         hintText: 'Password',
@@ -113,7 +120,7 @@ class _ShopDetailsState extends State<ShopDetails> {
                     ),
                     onTap: () {
                       setState((){
-                        _isEnabled = !_isEnabled;
+                        _isEnabled3 = !_isEnabled3;
                       });
                     },
                   ),
@@ -121,7 +128,7 @@ class _ShopDetailsState extends State<ShopDetails> {
 
                 ListTile(
                   title: TextField(
-                    enabled: _isEnabled,
+                    enabled: _isEnabled4,
                     decoration: InputDecoration(
                         label: Text("Location Coordinates"),
                         hintText: 'Latitude and Longitude(x,y)',
@@ -136,7 +143,7 @@ class _ShopDetailsState extends State<ShopDetails> {
                     ),
                     onTap: () {
                       setState((){
-                        _isEnabled = !_isEnabled;
+                        _isEnabled4 = !_isEnabled4;
                       });
                     },
                   ),

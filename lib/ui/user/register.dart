@@ -1,6 +1,13 @@
 
 
+import 'dart:ffi';
+
+import 'package:carrus_new/bloc/signinbloc.dart';
+import 'package:carrus_new/ui/loadingscreen.dart';
+import 'package:carrus_new/ui/user/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 
 class Register extends StatefulWidget {
@@ -15,7 +22,7 @@ class _RegisterState extends State<Register> {
   var email = TextEditingController();
   var phone = TextEditingController();
   var password = TextEditingController();
-  var cpassword = TextEditingController();
+  var place = TextEditingController();
   var dateOfBirth = TextEditingController();
   var gender = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -112,7 +119,7 @@ class _RegisterState extends State<Register> {
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.9,
                     child: TextField(
-                      controller: email,
+                      controller: phone,
 
 
                       style: TextStyle(color: Colors.black),
@@ -146,7 +153,7 @@ class _RegisterState extends State<Register> {
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.9,
                     child: TextField(
-                      controller: email,
+                      controller: place,
 
 
                       style: TextStyle(color: Colors.black),
@@ -181,7 +188,7 @@ class _RegisterState extends State<Register> {
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.9,
                     child: TextField(
-                      controller: email,
+                      controller: password,
 
 
                       style: TextStyle(color: Colors.black),
@@ -230,8 +237,11 @@ class _RegisterState extends State<Register> {
                   itemBuilder: (item) => RadioButtonBuilder(
                     item,
 
+
                   ),
+
                 ),
+
                 SizedBox(
                   height: 25,
                 ),
@@ -240,7 +250,7 @@ class _RegisterState extends State<Register> {
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.9,
                     child: TextField(
-                      controller: email,
+                      controller: dateOfBirth,
 
 
                       style: TextStyle(color: Colors.black),
@@ -271,7 +281,7 @@ class _RegisterState extends State<Register> {
                 ),
 
                 _signInButton(),
-                _okButton()
+                // _okButton()
 
                 //_date(),
               ],
@@ -285,19 +295,44 @@ class _RegisterState extends State<Register> {
   Widget _signInButton() {
     return ElevatedButton(
 
-      onPressed: () {}
-      ,
-      child: const Text('Sign in'),
-    );
-  }
-
-  Widget _okButton() {
-    return ElevatedButton(
-
       onPressed: () {
+        BlocProvider.of<SignInBloc>(context)
+            .add(CheckSIGN(password: password.text, email: email.text, name: name.text, phoneNumber: phone.text, place: place.text, gender: _verticalGroupValue, date_of_birth: dateOfBirth.text));
+      }
+      ,
+      child: BlocConsumer<SignInBloc, SignInState>(
+        builder: (context, state) {
+          return Text(
+            "Sign in",
+            style: TextStyle(color: Colors.white),
+          );
+        },
+        listener: (context, state) {
+          if (state is SignChecked) {
+            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+            Fluttertoast.showToast(msg: "Signed In Successfully");
 
-      },
-      child: const Text('ok'),
+          } else if (state is SignError) {
+            Navigator.pop(context);
+            Fluttertoast.showToast(
+              msg: state.error,
+            );
+          } else if (state is CheckingSign) {
+            Loading.showLoading(context);
+          }
+        },
+      )
     );
   }
+
+  // Widget _okButton() {
+  //   return ElevatedButton(
+  //
+  //     onPressed: () {
+  //
+  //     },
+  //     child: const Text('ok'),
+  //   );
+  // }
 }
