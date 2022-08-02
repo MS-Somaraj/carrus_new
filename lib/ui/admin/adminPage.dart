@@ -2,7 +2,7 @@ import 'package:carrus_new/ui/admin/manageCar.dart';
 import 'package:carrus_new/ui/admin/shopDetails.dart';
 import 'package:carrus_new/ui/admin/viewBookings.dart';
 import 'package:carrus_new/ui/admin/viewUser.dart';
-import 'package:carrus_new/ui/booking.dart';
+import 'package:carrus_new/ui/user/booking.dart';
 import 'package:flutter/material.dart';
 
 class Admin extends StatefulWidget {
@@ -20,17 +20,35 @@ class _AdminState extends State<Admin> {
         title: Text("Admin"),
 
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
+
+      child: Container(
+        decoration: new BoxDecoration(
+          color: Color(0xFFFFFFFF),
+        ),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+
             child: ListView(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               children:[
                 Card(
+
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+
                   child: ListTile(
                     leading: Icon(Icons.verified_user),
                     title: Text('View User'),
@@ -62,6 +80,9 @@ class _AdminState extends State<Admin> {
             ),
           ),
         ),
+      ),
+    ),
+    ),
       ),
     );
   }
