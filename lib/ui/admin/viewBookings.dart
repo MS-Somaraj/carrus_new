@@ -14,10 +14,13 @@ class _ViewBookingsState extends State<ViewBookings> {
       appBar: AppBar(
         title: Text("View Bookings"),
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(),
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: SingleChildScrollView(),
+        ),
       ),
     );
   }
