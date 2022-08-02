@@ -1,8 +1,5 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:group_radio_button/group_radio_button.dart';
-import 'package:image_picker/image_picker.dart';
 
 class AddCar extends StatefulWidget {
   const AddCar({Key? key}) : super(key: key);
@@ -19,7 +16,6 @@ class _AddCarState extends State<AddCar> {
   String? selectedType = 'Sedan';
   String _verticalGroupValue = "Petrol";
   List<String> _status = ["Petrol", "Diesel"];
-  File? imageFile;
 
   @override
   Widget build(BuildContext context) {
@@ -131,107 +127,10 @@ class _AddCarState extends State<AddCar> {
                   ),
                 ),
 
-                Container(
-                    child: imageFile == null
-                        ? Container(
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          RaisedButton(
-                            color: Color(0xff6998AB),
-                            onPressed: () {
-                              showModalBottomSheet<void>(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Container(
-                                    height: 120,
-                                    color: Colors.white,
-                                    child: Center(
-                                      child: Column(
 
-                                        //mainAxisAlignment:
-                                        //MainAxisAlignment.center,
-                                        // mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            ListTile(
-                                              tileColor: Colors.white,
-                                              leading:
-                                              Icon(Icons.image),
-                                              title: Text("Gallery"),
-                                              onTap: () => {
-                                                _getFromGallery(),
-                                              },
-                                            ),
-                                            ListTile(
-                                              tileColor: Colors.white,
-                                              leading:
-                                              Icon(Icons.camera),
-                                              title: Text("Camera"),
-                                              onTap: () => {
-                                                _getFromCamera(),
-                                              },
-                                            )
-                                          ]),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                            child: Text("UPLOAD IMAGE"),
-                          ),
-                          // Container(
-                          //  height: 40.0,
-                          //),
-                          //RaisedButton(
-                          // color: Colors.lightGreenAc  cent,
-                          // onPressed: () {
-                          // _getFromCamera();
-                          // },
-                          // child: Text("PICK FROM CAMERA"),
-                          //)
-                        ],
-                      ),
-                    )
-                        : Container(
-                      child: Image.file(
-                        imageFile!,
-                        fit: BoxFit.cover,
-                      ),
-                    )),
-                //photo
               ],
             ),
           ),
         ));
   }
-}
-
-
-_getFromGallery() async {
-  XFile? pickedFile = await ImagePicker().pickImage(
-    source: ImageSource.gallery,
-    maxWidth: 1800,
-    maxHeight: 1800,
-  );
-  if (pickedFile != null) {
-    setState(() {
-      imageFile = File(pickedFile.path);
-    });
-  }
-}
-
-/// Get from Camera
-_getFromCamera() async {
-  PickedFile? pickedFile = await ImagePicker().getImage(
-    source: ImageSource.camera,
-    maxWidth: 1800,
-    maxHeight: 1800,
-  );
-  if (pickedFile != null) {
-    setState(() {
-      imageFile = File(pickedFile.path);
-    });
-  }
-}
 }
