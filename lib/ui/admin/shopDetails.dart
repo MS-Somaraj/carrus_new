@@ -49,7 +49,8 @@ class _ShopDetailsState extends State<ShopDetails> {
           child: SingleChildScrollView(
             child: Column(children: [
               ListTile(
-                title: TextField(
+                title: TextFormField(
+                  initialValue: "hello",
                   controller: shopname,
                   enabled: _isEnabled,
                   decoration: InputDecoration(
@@ -75,7 +76,8 @@ class _ShopDetailsState extends State<ShopDetails> {
               ), //shop name
 
               ListTile(
-                title: TextField(
+                title: TextFormField(
+                  initialValue: "hello",
                   controller: ownername,
                   enabled: _isEnabled1,
                   decoration: InputDecoration(
@@ -98,7 +100,8 @@ class _ShopDetailsState extends State<ShopDetails> {
               ), //shop owner
 
               ListTile(
-                title: TextField(
+                title: TextFormField(
+                  initialValue: "hello",
                   controller: email,
                   enabled: _isEnabled2,
                   decoration: InputDecoration(
@@ -121,7 +124,8 @@ class _ShopDetailsState extends State<ShopDetails> {
               ), //email
 
               ListTile(
-                title: TextField(
+                title: TextFormField(
+                  initialValue: "hello",
                   controller: phone,
                   enabled: _isEnabled3,
                   decoration: InputDecoration(

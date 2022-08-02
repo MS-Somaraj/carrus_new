@@ -30,7 +30,8 @@ class EditShopBloc extends Bloc<EditShopEvent, EditShopState> {
 
     editShopModel = await Repository().editshop(url: '/shop/edit', data: body);
     if (editShopModel.status == true) {
-      emit(EditShopChecked());
+
+      emit(EditShopChecked(editShopModel:editShopModel));
     } else {
       print(editShopModel.msg);
       emit(EditShopError(error: editShopModel.msg.toString()));
@@ -68,7 +69,8 @@ class EditShopState extends Equatable {
 class CheckingEditShop extends EditShopState {}
 
 class EditShopChecked extends EditShopState {
-  EditShopChecked();
+ final EditShopModel editShopModel;
+  EditShopChecked({required this.editShopModel});
 }
 
 class EditShopError extends EditShopState {

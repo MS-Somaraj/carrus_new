@@ -1,9 +1,15 @@
+import 'package:carrus_new/bloc/editshopbloc.dart';
+import 'package:carrus_new/bloc/shopdetailsbloc.dart';
 import 'package:carrus_new/ui/admin/manageCar/manageCar.dart';
 import 'package:carrus_new/ui/admin/shopDetails.dart';
 import 'package:carrus_new/ui/admin/viewBookings.dart';
 import 'package:carrus_new/ui/admin/viewUser.dart';
 import 'package:carrus_new/ui/user/booking.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import '../loadingscreen.dart';
 
 class Admin extends StatefulWidget {
   const Admin({Key? key}) : super(key: key);
@@ -13,6 +19,7 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,58 +35,63 @@ class _AdminState extends State<Admin> {
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
 
-      child: Container(
-        decoration: new BoxDecoration(
-          color: Color(0xFFFFFFFF),
-        ),
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
+      child: Column(
+        children: [
+          Container(
+            decoration: new BoxDecoration(
+              color: Color(0xFFFFFFFF),
+            ),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(18.0),
 
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              children:[
-                Card(
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  children:[
+                    Card(
 
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.white70, width: 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.white70, width: 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
 
-                  child: ListTile(
-                    leading: Icon(Icons.verified_user),
-                    title: Text('View User'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
-                  ),
+                      child: ListTile(
+                        leading: Icon(Icons.verified_user),
+                        title: Text('View User'),
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewUser()));},
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        leading: Icon(Icons.car_rental),
+                        title: Text('Manage Car'),
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ManageCar()));},
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        leading: Icon(Icons.shop),
+                        title: Text('Manage Shop'),
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ShopDetails()));},
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        leading: Icon(Icons.book_online),
+                        title: Text('View Bookings'),
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewBookings()));},
+                      ),
+                    ),
+                  ],
                 ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.car_rental),
-                    title: Text('Manage Car'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ManageCar()));},
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.shop),
-                    title: Text('Shop Details'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ShopDetails()));},
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.book_online),
-                    title: Text('View Bookings'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewBookings()));},
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
+
+        ],
       ),
     ),
     ),
@@ -87,3 +99,4 @@ class _AdminState extends State<Admin> {
     );
   }
 }
+

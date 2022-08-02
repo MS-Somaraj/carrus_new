@@ -1,6 +1,7 @@
 import 'package:carrus_new/bloc/editshopbloc.dart';
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
+import 'package:carrus_new/bloc/shopdetailsbloc.dart';
 import 'package:carrus_new/bloc/signinbloc.dart';
 import 'package:carrus_new/helper/sharedpreferences.dart';
 import 'package:carrus_new/ui/admin/adminPage.dart';
@@ -23,10 +24,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<EditShopBloc>(create:(context)=> EditShopBloc()),
         BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
         BlocProvider<LogBloc>(create: (context) => LogBloc()),
         BlocProvider<SignInBloc>(create:(context)=> SignInBloc()),
         BlocProvider<EditShopBloc>(create:(context)=> EditShopBloc()),
+        BlocProvider<ShopDetailsBloc>(create:(context)=> ShopDetailsBloc()),
+
 
       ],
       child: MaterialApp(

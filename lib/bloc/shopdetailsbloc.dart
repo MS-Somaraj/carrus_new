@@ -26,12 +26,12 @@ class ShopDetailsBloc extends Bloc<ShopDetailsEvent, ShopDetailsState> {
 
 
     shopDetailsModel =
-    await Repository().details(url: '/shop/viewshop',);
+    await Repository().details(url: '/shop/viewshop');
     if (shopDetailsModel.status == true) {
 
+//TempStorage.addRole(shopDetailsModel.data[1].)
 
-
-      emit(DetailsChecked());
+      emit(DetailsChecked(shopDetailsModel: shopDetailsModel));
     } else {
       print(shopDetailsModel.msg);
       emit(DetailsError(error: shopDetailsModel.msg.toString()));
@@ -61,8 +61,8 @@ class ShopDetailsState extends Equatable {
 
 class CheckingDetails extends ShopDetailsState {}
 class DetailsChecked extends ShopDetailsState {
-
-  DetailsChecked();
+final ShopDetailsModel shopDetailsModel;
+  DetailsChecked({required this.shopDetailsModel});
 }
 
 class DetailsError extends ShopDetailsState {
