@@ -29,11 +29,12 @@ class _ModifyCarState extends State<ModifyCar> {
       return TextField(
         onChanged: (String s) {
           setState(() {
-            BlocProvider.of<AllCarBloc>(context).add(CheckALLCAR());
+
             _searchIndexList = [];
             for (int i = 0; i < state.allCarModel.data!.length; i++) {
-              if (state.allCarModel.data![i].carname.toString().contains(s)) {
+              if (state.allCarModel.data![i].carname!.contains(s)) {
                 _searchIndexList.add(i);
+
               }
             }
           });
@@ -72,8 +73,10 @@ class _ModifyCarState extends State<ModifyCar> {
         return
      ListView.builder(
         itemCount: state.allCarModel.data!.length,
-        itemBuilder: (context,int index) {
-          // index = state.allCarModel.data!.length-1;
+        itemBuilder: (context, index) {
+          //index = _searchIndexList[index];
+          index=_searchIndexList[index];
+
           return Card(
               child:
                   Column(
@@ -103,11 +106,12 @@ class _ModifyCarState extends State<ModifyCar> {
 
 
           );
+          return Container();
         }
     );
 
   }
-  else {return Container();}
+  else {return Container(child:Text("pooda soma"));}
 }
 );
   }
@@ -116,43 +120,43 @@ class _ModifyCarState extends State<ModifyCar> {
 
     return BlocBuilder<AllCarBloc, AllCarState>(builder: (context,state){
       if(state is AllCarChecked) {
-        return Container();
-
-  }else {return ListView.builder(
-          itemCount: state.allCarModel.data!.length,
-          itemBuilder: (context,int index) {
-            // index = state.allCarModel.data!.length-1;
-            return Card(
-              child:
-              Column(
-                children: [
-                  ListTile(
-                    title: Text(state.allCarModel.data![index].carname!),
-                  ),
-                  ListTile(
-                    title: Text(state.allCarModel.data![index].type!.toString()),
-                  ),
-                  ListTile(
-                    title: Text(state.allCarModel.data![index].enginetype.toString()),
-                  ),
-                  ListTile(
-                    title: Text(state.allCarModel.data![index].price!.toString()),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+        return
+          ListView.builder(
+              itemCount: state.allCarModel.data!.length,
+              itemBuilder: (context,int index) {
+                // index = state.allCarModel.data!.length-1;
+                return Card(
+                  child:
+                  Column(
                     children: [
-                      MaterialButton(onPressed: (){},child: Text("Edit"),),
-                      MaterialButton(onPressed: (){},child: Text("Delete"),)
+                      ListTile(
+                        title: Text(state.allCarModel.data![index].carname!),
+                      ),
+                      ListTile(
+                        title: Text(state.allCarModel.data![index].type!.toString()),
+                      ),
+                      ListTile(
+                        title: Text(state.allCarModel.data![index].enginetype.toString()),
+                      ),
+                      ListTile(
+                        title: Text(state.allCarModel.data![index].price!.toString()),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          MaterialButton(onPressed: (){},child: Text("Edit"),),
+                          MaterialButton(onPressed: (){},child: Text("Delete"),)
+                        ],
+                      ),
+
                     ],
                   ),
 
-                ],
-              ),
 
-
-            );
-          }
-      );}
+                );
+              }
+          );
+  }else {return Container();}
     }
     );
   }
