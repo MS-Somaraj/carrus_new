@@ -113,30 +113,47 @@ class _ModifyCarState extends State<ModifyCar> {
   }
 
   Widget _defaultListView() {
-    return ListView.builder(
-        itemCount: _list.length,
-        itemBuilder: (context, index) {
-          return Card(
+
+    return BlocBuilder<AllCarBloc, AllCarState>(builder: (context,state){
+      if(state is AllCarChecked) {
+        return Container();
+
+  }else {return ListView.builder(
+          itemCount: state.allCarModel.data!.length,
+          itemBuilder: (context,int index) {
+            // index = state.allCarModel.data!.length-1;
+            return Card(
               child:
-
-                  Column(
+              Column(
+                children: [
+                  ListTile(
+                    title: Text(state.allCarModel.data![index].carname!),
+                  ),
+                  ListTile(
+                    title: Text(state.allCarModel.data![index].type!.toString()),
+                  ),
+                  ListTile(
+                    title: Text(state.allCarModel.data![index].enginetype.toString()),
+                  ),
+                  ListTile(
+                    title: Text(state.allCarModel.data![index].price!.toString()),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      ListTile(
-                        title: Text(_list[index]),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          MaterialButton(onPressed: (){},child: Text("Edit"),),
-                          MaterialButton(onPressed: (){},child: Text("Delete"),)
-                        ],
-                      ),
-
+                      MaterialButton(onPressed: (){},child: Text("Edit"),),
+                      MaterialButton(onPressed: (){},child: Text("Delete"),)
                     ],
                   ),
 
-          );
-        }
+                ],
+              ),
+
+
+            );
+          }
+      );}
+    }
     );
   }
 
