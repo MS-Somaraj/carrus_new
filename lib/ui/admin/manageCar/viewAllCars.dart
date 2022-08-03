@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ViewAllCars extends StatefulWidget {
-  const ViewAllCars({Key? key,
-    required this.title,}
-  ) : super(key: key);
-  final String title;
+
+   String title="hello";
 
 
   @override
