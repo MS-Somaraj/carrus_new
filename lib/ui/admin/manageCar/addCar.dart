@@ -1,9 +1,14 @@
 import 'dart:io';
 
+import 'package:carrus_new/bloc/addcarbloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../loadingscreen.dart';
+import 'manageCar.dart';
 
 class AddCar extends StatefulWidget {
   const AddCar({Key? key}) : super(key: key);
@@ -33,66 +38,76 @@ class _AddCarState extends State<AddCar> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-
                 Padding(
-                  padding: const EdgeInsets.only(top:8.0),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: Container(
-                    width: MediaQuery.of(context).size.width*0.9,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextField(
                       controller: _carname,
                       style: TextStyle(color: Colors.deepPurple),
                       decoration: new InputDecoration(
                         label: Text('Car Name'),
-
                         border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
-                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
-                          gapPadding :4.0,
+                          borderSide:
+                              const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding: 4.0,
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
-                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
-                          gapPadding :4.0,
+                          borderSide:
+                              const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding: 4.0,
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.deepPurple,width: 1.2 ),
-                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
-                          gapPadding :4.0,
+                          borderSide: const BorderSide(
+                              color: Colors.deepPurple, width: 1.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding: 4.0,
                         ),
                       ),
                     ),
                   ),
-                ),  //car name
+                ), //car name
                 Padding(
-                  padding: const EdgeInsets.only(top:8.0),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: Container(
-                    width: MediaQuery.of(context).size.width*0.9,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextField(
                       controller: _price,
                       style: TextStyle(color: Colors.deepPurple),
                       decoration: new InputDecoration(
                         label: Text('Car Price'),
                         border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
-                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
-                          gapPadding :4.0,
+                          borderSide:
+                              const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding: 4.0,
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black, width: 1.2),
-                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
-                          gapPadding :4.0,
+                          borderSide:
+                              const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding: 4.0,
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.black,width: 1.2 ),
-                          borderRadius : const BorderRadius.all(Radius.circular(15.0)),
-                          gapPadding :4.0,
+                          borderSide:
+                              const BorderSide(color: Colors.black, width: 1.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
+                          gapPadding: 4.0,
                         ),
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(23,8,23,8),
+                  padding: const EdgeInsets.fromLTRB(23, 8, 23, 8),
                   child: DropdownButton(
                     elevation: 20,
                     focusColor: Colors.deepPurple,
@@ -100,11 +115,12 @@ class _AddCarState extends State<AddCar> {
                     iconDisabledColor: Colors.black,
                     value: selectedType,
                     items: _cartype
-                        .map((item) =>
-                        DropdownMenuItem(value: item, child: Padding(
-                          padding: const EdgeInsets.only(left:12.0),
-                          child: Text(item),
-                        )))
+                        .map((item) => DropdownMenuItem(
+                            value: item,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 12.0),
+                              child: Text(item),
+                            )))
                         .toList(),
                     onChanged: (item) {
                       setState(() => selectedType = item as String?);
@@ -122,10 +138,7 @@ class _AddCarState extends State<AddCar> {
                     _verticalGroupValue = value!;
                   }),
                   items: _status,
-                  textStyle: TextStyle(
-                      fontSize: 15,
-                      color: Colors.deepPurple
-                  ),
+                  textStyle: TextStyle(fontSize: 15, color: Colors.deepPurple),
                   itemBuilder: (item) => RadioButtonBuilder(
                     item,
                   ),
@@ -138,42 +151,70 @@ class _AddCarState extends State<AddCar> {
                   onPressed: () {
                     _getFromGallery();
                   },
-                  child: Text("PICK FROM GALLERY",style: TextStyle(color: Colors.white),),
+                  child: Text(
+                    "PICK FROM GALLERY",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   height: 12,
                 ),
                 RaisedButton(
-                  colorBrightness: Brightness.light,
-                  color: Colors.deepPurple,
-                  onPressed: () {
-                    _getFromCamera();
-                  },
-                  child: Text("PICK FROM CAMERA",style: TextStyle(color: Colors.white),)
-
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                RaisedButton(
                     colorBrightness: Brightness.light,
                     color: Colors.deepPurple,
                     onPressed: () {
-
+                      _getFromCamera();
                     },
-                    child: Text("Submit",style: TextStyle(color: Colors.white),)
-
+                    child: Text(
+                      "PICK FROM CAMERA",
+                      style: TextStyle(color: Colors.white),
+                    )),
+                SizedBox(
+                  height: 100,
                 ),
+                MaterialButton(
+                    colorBrightness: Brightness.light,
+                    color: Colors.deepPurple,
+                    onPressed: () {
+                      BlocProvider.of<AddCarBloc>(context).add(CheckADDCAR(
+                          carname: _carname.text,
+                          type: selectedType.toString(),
+                          price: _price.text,
+                          enginetype: _verticalGroupValue));
+                    },
+                    child: BlocConsumer<AddCarBloc, AddCarState>(
+                      builder: (context, state) {
+                        return Text(
+                          "Add Car",
+                          style: TextStyle(color: Colors.white),
+                        );
+                      },
+                      listener: (context, state) {
+                        if (state is AddCarChecked) {
+                          Navigator.pop(context);
 
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(builder: (context) => ManageCar()),
+                                      (Route<dynamic> route) => false);
 
-
-
+                          }
+                         else if (state is AddCarError) {
+                          Navigator.pop(context);
+                          Fluttertoast.showToast(
+                            msg: state.error,
+                          );
+                        } else if (state is CheckingAddCar) {
+                          Loading.showLoading(context);
+                        }
+                      },
+                    )),
               ],
             ),
           ),
         ));
   }
 }
+
 _getFromGallery() async {
   PickedFile? pickedFile = await ImagePicker().getImage(
     source: ImageSource.gallery,
@@ -184,6 +225,7 @@ _getFromGallery() async {
     File imageFile = File(pickedFile.path);
   }
 }
+
 _getFromCamera() async {
   PickedFile? pickedFile = await ImagePicker().getImage(
     source: ImageSource.camera,

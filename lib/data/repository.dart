@@ -1,3 +1,4 @@
+import 'package:carrus_new/data/models/AddCarModel.dart';
 import 'package:carrus_new/data/models/EditShopModel.dart';
 import 'package:carrus_new/data/models/LoginModel.dart';
 import 'package:carrus_new/data/models/LogoutModel.dart';
@@ -81,6 +82,18 @@ class Repository {
     final ShopDetailsModel shopDetailsModel = ShopDetailsModel.fromJson(response);
     return shopDetailsModel;
   }
-
+  Future<AddCarModel> addcar({required String url, dynamic data}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      Fluttertoast.showToast(
+        msg: "No internet connection",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+      );
+    }
+    final dynamic response = await WebClient.post(url, data);
+    final AddCarModel addCarModel = AddCarModel.fromJson(response);
+    return addCarModel;
+  }
 
 }
