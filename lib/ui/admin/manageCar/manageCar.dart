@@ -1,5 +1,4 @@
 import 'package:carrus_new/ui/admin/manageCar/addCar.dart';
-import 'package:carrus_new/ui/admin/manageCar/deleteCar.dart';
 import 'package:carrus_new/ui/admin/manageCar/editCar.dart';
 import 'package:carrus_new/ui/admin/manageCar/viewAllCars.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +35,7 @@ class _ManageCarState extends State<ManageCar> {
                   child: ListTile(
                     leading: Icon(Icons.verified_user),
                     title: Text('View All Cars'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewAllCars(title: "")));},
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewAllCars()));},
                   ),
                 ),
                 Card(
@@ -53,13 +52,7 @@ class _ManageCarState extends State<ManageCar> {
                     onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>EditCar()));},
                   ),
                 ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.book_online),
-                    title: Text('Delete Car'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>DeleteCar()));},
-                  ),
-                ),
+
               ],
             ),
           ),
