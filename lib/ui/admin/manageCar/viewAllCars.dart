@@ -1,112 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ViewAllCars extends StatefulWidget {
+import '../../../bloc/AllCarBloc.dart';
 
-   String title="hello";
-
+class ViewAllUsers extends StatefulWidget {
+  const ViewAllUsers({Key? key}) : super(key: key);
 
   @override
-  State<ViewAllCars> createState() => _ViewAllCarsState();
+  State<ViewAllUsers> createState() => _ViewAllUsersState();
 }
 
-class _ViewAllCarsState extends State<ViewAllCars> {
+class _ViewAllUsersState extends State<ViewAllUsers> {
 
+  void initState(){
 
-  bool _searchBoolean = false;
-List<int> _searchIndexList = [];
+    super.initState();
+    BlocProvider.of<AllCarBloc>(context).add(CheckALLCAR());
 
-List<String> _list = ['English Textbook', 'Japanese Textbook', 'English Vocabulary', 'Japanese Vocabulary'];
-
-Widget _searchTextField() {
-  return TextField(
-    onChanged: (String s) {
-      setState(() {
-        _searchIndexList = [];
-        for (int i = 0; i < _list.length; i++) {
-          if (_list[i].contains(s)) {
-            _searchIndexList.add(i);
-          }
-        }
-      });
-    },
-    autofocus: true,
-    cursorColor: Colors.white,
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: 20,
-    ),
-    textInputAction: TextInputAction.search,
-    decoration: InputDecoration(
-      enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white)
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("View All users"),),
+      body: SingleChildScrollView(
+        child: _defaultListView(),
       ),
-      focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white)
-      ),
-      hintText: 'Search',
-      hintStyle: TextStyle(
-        color: Colors.white60,
-        fontSize: 20,
-      ),
-    ),
-  );
+    );
+  }
 }
-
-Widget _searchListView() {
-  return ListView.builder(
-      itemCount: _searchIndexList.length,
-      itemBuilder: (context, index) {
-        index = _searchIndexList[index];
-        return Card(
-            child: ListTile(
-                title: Text(_list[index])
-            )
-        );
-      }
-  );
-}
-
 Widget _defaultListView() {
-  return ListView.builder(
-      itemCount: _list.length,
-      itemBuilder: (context, index) {
-        return Card(
-            child: ListTile(
-                title: Text(_list[index])
-            )
+
+  return BlocBuilder<AllCarBloc, AllCarState>(builder: (context,state){
+    if(state is AllCarChecked) {
+      return
+        ListView.builder(
+            itemCount: state.allCarModel.data!.length,
+            itemBuilder: (context,int index) {
+              // index = state.allCarModel.data!.length-1;
+              return Card(
+                child:
+                Column(
+                  children: [
+                    ListTile(
+                      title: Text(state.allCarModel.data![index].carname!),
+                    ),
+                    ListTile(
+                      title: Text(state.allCarModel.data![index].type!.toString()),
+                    ),
+                    ListTile(
+                      title: Text(state.allCarModel.data![index].enginetype.toString()),
+                    ),
+                    ListTile(
+                      title: Text(state.allCarModel.data![index].price!.toString()),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MaterialButton(onPressed: (){},child: Text("Edit"),),
+                        MaterialButton(onPressed: (){},child: Text("Delete"),)
+                      ],
+                    ),
+
+                  ],
+                ),
+
+
+              );
+            }
         );
-      }
+    }else {return Container();}
+  }
   );
 }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(
-          title: !_searchBoolean ? Text(widget.title) : _searchTextField(),
-          actions: !_searchBoolean
-              ? [
-            IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  setState(() {
-                    _searchBoolean = true;
-                    _searchIndexList = [];
-                  });
-                })
-          ]
-              : [
-            IconButton(
-                icon: Icon(Icons.clear),
-                onPressed: () {
-                  setState(() {
-                    _searchBoolean = false;
-                  });
-                }
-            )
-          ]
-      ),
-      body: !_searchBoolean ? _defaultListView() : _searchListView()
-  );
-}
-}

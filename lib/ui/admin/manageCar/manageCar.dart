@@ -36,7 +36,7 @@ class _ManageCarState extends State<ManageCar> {
                   child: ListTile(
                     leading: Icon(Icons.verified_user),
                     title: Text('View All Cars'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewAllCars()));},
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewAllUsers()));},
                   ),
                 ),
                 Card(

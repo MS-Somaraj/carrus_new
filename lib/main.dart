@@ -1,8 +1,5 @@
-
 import 'package:carrus_new/bloc/addcarbloc.dart';
-
 import 'package:carrus_new/bloc/AllCarBloc.dart';
-
 import 'package:carrus_new/bloc/editshopbloc.dart';
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
@@ -18,10 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   // This widget is the root of your application.
   @override
