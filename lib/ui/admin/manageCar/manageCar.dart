@@ -1,5 +1,6 @@
 import 'package:carrus_new/ui/admin/manageCar/addCar.dart';
 import 'package:carrus_new/ui/admin/manageCar/editCar.dart';
+import 'package:carrus_new/ui/admin/manageCar/modifyCar.dart';
 import 'package:carrus_new/ui/admin/manageCar/viewAllCars.dart';
 import 'package:flutter/material.dart';
 
@@ -48,8 +49,8 @@ class _ManageCarState extends State<ManageCar> {
                 Card(
                   child: ListTile(
                     leading: Icon(Icons.shop),
-                    title: Text('Edit Car'),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>EditCar()));},
+                    title: Text('Modify'),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ModifyCar()));},
                   ),
                 ),
 
