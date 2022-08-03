@@ -1,4 +1,8 @@
+
+import 'package:carrus_new/bloc/addcarbloc.dart';
+
 import 'package:carrus_new/bloc/AllCarBloc.dart';
+
 import 'package:carrus_new/bloc/editshopbloc.dart';
 import 'package:carrus_new/bloc/loginbloc.dart';
 import 'package:carrus_new/bloc/logoutbloc.dart';
@@ -32,7 +36,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<SignInBloc>(create:(context)=> SignInBloc()),
         BlocProvider<EditShopBloc>(create:(context)=> EditShopBloc()),
         BlocProvider<ShopDetailsBloc>(create:(context)=> ShopDetailsBloc()),
+
+        BlocProvider<AddCarBloc>(create:(context)=> AddCarBloc()),
+
         BlocProvider<AllCarBloc>(create:(context)=> AllCarBloc()),
+
 
 
       ],
